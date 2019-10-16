@@ -1,0 +1,1069 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FarmacosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Examenes">
+          <Key>
+            <PropertyRef Name="idExamen" />
+          </Key>
+          <Property Name="idExamen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="examen" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FarmacoExamen">
+          <Key>
+            <PropertyRef Name="idExamenFarmaco" />
+          </Key>
+          <Property Name="idExamenFarmaco" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idExamen" Type="int" />
+          <Property Name="idFarmaco" Type="int" />
+        </EntityType>
+        <EntityType Name="FarmacoPaciente">
+          <Key>
+            <PropertyRef Name="idFarmacoPaciente" />
+          </Key>
+          <Property Name="idFarmacoPaciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFarmaco" Type="int" />
+          <Property Name="idPaciente" Type="int" />
+        </EntityType>
+        <EntityType Name="FarmacoReceta">
+          <Key>
+            <PropertyRef Name="idFarmacoReceta" />
+          </Key>
+          <Property Name="idFarmacoReceta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFarmaco" Type="int" />
+          <Property Name="idReceta" Type="int" />
+        </EntityType>
+        <EntityType Name="Farmacos">
+          <Key>
+            <PropertyRef Name="idFarmacos" />
+          </Key>
+          <Property Name="idFarmacos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="farmaco" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Historial">
+          <Key>
+            <PropertyRef Name="idHistorial" />
+          </Key>
+          <Property Name="idHistorial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idExamen" Type="int" />
+          <Property Name="idFarmaco" Type="int" />
+          <Property Name="doctor" Type="varchar" MaxLength="50" />
+          <Property Name="rutPaciente" Type="int" />
+          <Property Name="fechaIngresoFarmaco" Type="date" />
+          <Property Name="rangoDeExamen" Type="int" />
+          <Property Name="tipo" Type="int" />
+          <Property Name="proximaFecha" Type="date" />
+        </EntityType>
+        <EntityType Name="ItemsPreventivos">
+          <Key>
+            <PropertyRef Name="idItemsPreventivo" />
+          </Key>
+          <Property Name="idItemsPreventivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="codTipoSeguimiento" Type="int" />
+        </EntityType>
+        <EntityType Name="Modulos">
+          <Key>
+            <PropertyRef Name="idModulo" />
+          </Key>
+          <Property Name="idModulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="tipo" Type="bit" />
+          <Property Name="vista" Type="varchar" MaxLength="100" />
+          <Property Name="controlador" Type="varchar" MaxLength="100" />
+          <Property Name="icono" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="idPaciente" />
+          </Key>
+          <Property Name="idPaciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rut" Type="varchar" MaxLength="50" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="edad" Type="varchar" MaxLength="50" />
+          <Property Name="isapre" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PermisosMenu">
+          <Key>
+            <PropertyRef Name="idPermisosModulo" />
+          </Key>
+          <Property Name="idPermisosModulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codModulo" Type="int" />
+          <Property Name="tipo" Type="int" />
+        </EntityType>
+        <EntityType Name="PermisosSubMenu">
+          <Key>
+            <PropertyRef Name="idPermisosSubMenu" />
+          </Key>
+          <Property Name="idPermisosSubMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codSubMenu" Type="int" />
+          <Property Name="tipo" Type="int" />
+        </EntityType>
+        <EntityType Name="PreguntasItems">
+          <Key>
+            <PropertyRef Name="idPreguntasItems" />
+          </Key>
+          <Property Name="idPreguntasItems" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="500" />
+          <Property Name="codItems" Type="int" />
+        </EntityType>
+        <EntityType Name="SubMenu">
+          <Key>
+            <PropertyRef Name="idSubModulo" />
+          </Key>
+          <Property Name="idSubModulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="codModulo" Type="int" />
+          <Property Name="vista" Type="varchar" MaxLength="100" />
+          <Property Name="controlador" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TipoDeSeguimiento">
+          <Key>
+            <PropertyRef Name="idTipo" />
+          </Key>
+          <Property Name="idTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="idTipoUsuario" />
+          </Key>
+          <Property Name="idTipoUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="150" />
+          <Property Name="apellido" Type="varchar" MaxLength="150" />
+          <Property Name="correo" Type="varchar" MaxLength="150" />
+          <Property Name="contrasena" Type="varchar" MaxLength="50" />
+          <Property Name="tipoUsuario" Type="int" />
+          <Property Name="hash" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_FarmacoExamen_Examenes">
+          <End Role="Examenes" Type="Self.Examenes" Multiplicity="0..1" />
+          <End Role="FarmacoExamen" Type="Self.FarmacoExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examenes">
+              <PropertyRef Name="idExamen" />
+            </Principal>
+            <Dependent Role="FarmacoExamen">
+              <PropertyRef Name="idExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FarmacoExamen_Farmacos">
+          <End Role="Farmacos" Type="Self.Farmacos" Multiplicity="0..1" />
+          <End Role="FarmacoExamen" Type="Self.FarmacoExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farmacos">
+              <PropertyRef Name="idFarmacos" />
+            </Principal>
+            <Dependent Role="FarmacoExamen">
+              <PropertyRef Name="idFarmaco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FarmacoPaciente_Farmacos">
+          <End Role="Farmacos" Type="Self.Farmacos" Multiplicity="0..1" />
+          <End Role="FarmacoPaciente" Type="Self.FarmacoPaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farmacos">
+              <PropertyRef Name="idFarmacos" />
+            </Principal>
+            <Dependent Role="FarmacoPaciente">
+              <PropertyRef Name="idFarmaco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FarmacoPaciente_Paciente">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+          <End Role="FarmacoPaciente" Type="Self.FarmacoPaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="idPaciente" />
+            </Principal>
+            <Dependent Role="FarmacoPaciente">
+              <PropertyRef Name="idPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FarmacoReceta_Farmacos">
+          <End Role="Farmacos" Type="Self.Farmacos" Multiplicity="0..1" />
+          <End Role="FarmacoReceta" Type="Self.FarmacoReceta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farmacos">
+              <PropertyRef Name="idFarmacos" />
+            </Principal>
+            <Dependent Role="FarmacoReceta">
+              <PropertyRef Name="idFarmaco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Historial_Paciente">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+          <End Role="Historial" Type="Self.Historial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="idPaciente" />
+            </Principal>
+            <Dependent Role="Historial">
+              <PropertyRef Name="rutPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Historial_TipoDeSeguimiento">
+          <End Role="TipoDeSeguimiento" Type="Self.TipoDeSeguimiento" Multiplicity="0..1" />
+          <End Role="Historial" Type="Self.Historial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDeSeguimiento">
+              <PropertyRef Name="idTipo" />
+            </Principal>
+            <Dependent Role="Historial">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemsPreventivos_TipoDeSeguimiento">
+          <End Role="TipoDeSeguimiento" Type="Self.TipoDeSeguimiento" Multiplicity="0..1" />
+          <End Role="ItemsPreventivos" Type="Self.ItemsPreventivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDeSeguimiento">
+              <PropertyRef Name="idTipo" />
+            </Principal>
+            <Dependent Role="ItemsPreventivos">
+              <PropertyRef Name="codTipoSeguimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermisosMenu_Modulos">
+          <End Role="Modulos" Type="Self.Modulos" Multiplicity="0..1" />
+          <End Role="PermisosMenu" Type="Self.PermisosMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulos">
+              <PropertyRef Name="idModulo" />
+            </Principal>
+            <Dependent Role="PermisosMenu">
+              <PropertyRef Name="codModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermisosMenu_TipoUsuario">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="0..1" />
+          <End Role="PermisosMenu" Type="Self.PermisosMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="idTipoUsuario" />
+            </Principal>
+            <Dependent Role="PermisosMenu">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermisosSubMenu_SubMenu">
+          <End Role="SubMenu" Type="Self.SubMenu" Multiplicity="0..1" />
+          <End Role="PermisosSubMenu" Type="Self.PermisosSubMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubMenu">
+              <PropertyRef Name="idSubModulo" />
+            </Principal>
+            <Dependent Role="PermisosSubMenu">
+              <PropertyRef Name="codSubMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermisosSubMenu_TipoUsuario">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="0..1" />
+          <End Role="PermisosSubMenu" Type="Self.PermisosSubMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="idTipoUsuario" />
+            </Principal>
+            <Dependent Role="PermisosSubMenu">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreguntasItems_ItemsPreventivos">
+          <End Role="ItemsPreventivos" Type="Self.ItemsPreventivos" Multiplicity="0..1" />
+          <End Role="PreguntasItems" Type="Self.PreguntasItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemsPreventivos">
+              <PropertyRef Name="idItemsPreventivo" />
+            </Principal>
+            <Dependent Role="PreguntasItems">
+              <PropertyRef Name="codItems" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubMenu_Modulos">
+          <End Role="Modulos" Type="Self.Modulos" Multiplicity="0..1" />
+          <End Role="SubMenu" Type="Self.SubMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulos">
+              <PropertyRef Name="idModulo" />
+            </Principal>
+            <Dependent Role="SubMenu">
+              <PropertyRef Name="codModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_TipoUsuario">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="idTipoUsuario" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="tipoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FarmacosModelStoreContainer">
+          <EntitySet Name="Examenes" EntityType="Self.Examenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FarmacoExamen" EntityType="Self.FarmacoExamen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FarmacoPaciente" EntityType="Self.FarmacoPaciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FarmacoReceta" EntityType="Self.FarmacoReceta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Farmacos" EntityType="Self.Farmacos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Historial" EntityType="Self.Historial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemsPreventivos" EntityType="Self.ItemsPreventivos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modulos" EntityType="Self.Modulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PermisosMenu" EntityType="Self.PermisosMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PermisosSubMenu" EntityType="Self.PermisosSubMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreguntasItems" EntityType="Self.PreguntasItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubMenu" EntityType="Self.SubMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoDeSeguimiento" EntityType="Self.TipoDeSeguimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_FarmacoExamen_Examenes" Association="Self.FK_FarmacoExamen_Examenes">
+            <End Role="Examenes" EntitySet="Examenes" />
+            <End Role="FarmacoExamen" EntitySet="FarmacoExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FarmacoExamen_Farmacos" Association="Self.FK_FarmacoExamen_Farmacos">
+            <End Role="Farmacos" EntitySet="Farmacos" />
+            <End Role="FarmacoExamen" EntitySet="FarmacoExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FarmacoPaciente_Farmacos" Association="Self.FK_FarmacoPaciente_Farmacos">
+            <End Role="Farmacos" EntitySet="Farmacos" />
+            <End Role="FarmacoPaciente" EntitySet="FarmacoPaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FarmacoPaciente_Paciente" Association="Self.FK_FarmacoPaciente_Paciente">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="FarmacoPaciente" EntitySet="FarmacoPaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FarmacoReceta_Farmacos" Association="Self.FK_FarmacoReceta_Farmacos">
+            <End Role="Farmacos" EntitySet="Farmacos" />
+            <End Role="FarmacoReceta" EntitySet="FarmacoReceta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Historial_Paciente" Association="Self.FK_Historial_Paciente">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Historial" EntitySet="Historial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Historial_TipoDeSeguimiento" Association="Self.FK_Historial_TipoDeSeguimiento">
+            <End Role="TipoDeSeguimiento" EntitySet="TipoDeSeguimiento" />
+            <End Role="Historial" EntitySet="Historial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsPreventivos_TipoDeSeguimiento" Association="Self.FK_ItemsPreventivos_TipoDeSeguimiento">
+            <End Role="TipoDeSeguimiento" EntitySet="TipoDeSeguimiento" />
+            <End Role="ItemsPreventivos" EntitySet="ItemsPreventivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermisosMenu_Modulos" Association="Self.FK_PermisosMenu_Modulos">
+            <End Role="Modulos" EntitySet="Modulos" />
+            <End Role="PermisosMenu" EntitySet="PermisosMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermisosMenu_TipoUsuario" Association="Self.FK_PermisosMenu_TipoUsuario">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="PermisosMenu" EntitySet="PermisosMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermisosSubMenu_SubMenu" Association="Self.FK_PermisosSubMenu_SubMenu">
+            <End Role="SubMenu" EntitySet="SubMenu" />
+            <End Role="PermisosSubMenu" EntitySet="PermisosSubMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermisosSubMenu_TipoUsuario" Association="Self.FK_PermisosSubMenu_TipoUsuario">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="PermisosSubMenu" EntitySet="PermisosSubMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreguntasItems_ItemsPreventivos" Association="Self.FK_PreguntasItems_ItemsPreventivos">
+            <End Role="ItemsPreventivos" EntitySet="ItemsPreventivos" />
+            <End Role="PreguntasItems" EntitySet="PreguntasItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubMenu_Modulos" Association="Self.FK_SubMenu_Modulos">
+            <End Role="Modulos" EntitySet="Modulos" />
+            <End Role="SubMenu" EntitySet="SubMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_TipoUsuario" Association="Self.FK_Usuario_TipoUsuario">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FarmacosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Examenes">
+          <Key>
+            <PropertyRef Name="idExamen" />
+          </Key>
+          <Property Name="idExamen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="examen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FarmacoExamen" Relationship="Self.FK_FarmacoExamen_Examenes" FromRole="Examenes" ToRole="FarmacoExamen" />
+        </EntityType>
+        <EntityType Name="FarmacoExamen">
+          <Key>
+            <PropertyRef Name="idExamenFarmaco" />
+          </Key>
+          <Property Name="idExamenFarmaco" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idExamen" Type="Int32" />
+          <Property Name="idFarmaco" Type="Int32" />
+          <NavigationProperty Name="Examenes" Relationship="Self.FK_FarmacoExamen_Examenes" FromRole="FarmacoExamen" ToRole="Examenes" />
+          <NavigationProperty Name="Farmacos" Relationship="Self.FK_FarmacoExamen_Farmacos" FromRole="FarmacoExamen" ToRole="Farmacos" />
+        </EntityType>
+        <EntityType Name="FarmacoPaciente">
+          <Key>
+            <PropertyRef Name="idFarmacoPaciente" />
+          </Key>
+          <Property Name="idFarmacoPaciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFarmaco" Type="Int32" />
+          <Property Name="idPaciente" Type="Int32" />
+          <NavigationProperty Name="Farmacos" Relationship="Self.FK_FarmacoPaciente_Farmacos" FromRole="FarmacoPaciente" ToRole="Farmacos" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_FarmacoPaciente_Paciente" FromRole="FarmacoPaciente" ToRole="Paciente" />
+        </EntityType>
+        <EntityType Name="FarmacoReceta">
+          <Key>
+            <PropertyRef Name="idFarmacoReceta" />
+          </Key>
+          <Property Name="idFarmacoReceta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFarmaco" Type="Int32" />
+          <Property Name="idReceta" Type="Int32" />
+          <NavigationProperty Name="Farmacos" Relationship="Self.FK_FarmacoReceta_Farmacos" FromRole="FarmacoReceta" ToRole="Farmacos" />
+        </EntityType>
+        <EntityType Name="Farmacos">
+          <Key>
+            <PropertyRef Name="idFarmacos" />
+          </Key>
+          <Property Name="idFarmacos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="farmaco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FarmacoExamen" Relationship="Self.FK_FarmacoExamen_Farmacos" FromRole="Farmacos" ToRole="FarmacoExamen" />
+          <NavigationProperty Name="FarmacoPaciente" Relationship="Self.FK_FarmacoPaciente_Farmacos" FromRole="Farmacos" ToRole="FarmacoPaciente" />
+          <NavigationProperty Name="FarmacoReceta" Relationship="Self.FK_FarmacoReceta_Farmacos" FromRole="Farmacos" ToRole="FarmacoReceta" />
+        </EntityType>
+        <EntityType Name="Historial">
+          <Key>
+            <PropertyRef Name="idHistorial" />
+          </Key>
+          <Property Name="idHistorial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idExamen" Type="Int32" />
+          <Property Name="idFarmaco" Type="Int32" />
+          <Property Name="doctor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rutPaciente" Type="Int32" />
+          <Property Name="fechaIngresoFarmaco" Type="DateTime" Precision="0" />
+          <Property Name="rangoDeExamen" Type="Int32" />
+          <Property Name="tipo" Type="Int32" />
+          <Property Name="proximaFecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_Historial_Paciente" FromRole="Historial" ToRole="Paciente" />
+          <NavigationProperty Name="TipoDeSeguimiento" Relationship="Self.FK_Historial_TipoDeSeguimiento" FromRole="Historial" ToRole="TipoDeSeguimiento" />
+        </EntityType>
+        <EntityType Name="ItemsPreventivos">
+          <Key>
+            <PropertyRef Name="idItemsPreventivo" />
+          </Key>
+          <Property Name="idItemsPreventivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="codTipoSeguimiento" Type="Int32" />
+          <NavigationProperty Name="TipoDeSeguimiento" Relationship="Self.FK_ItemsPreventivos_TipoDeSeguimiento" FromRole="ItemsPreventivos" ToRole="TipoDeSeguimiento" />
+          <NavigationProperty Name="PreguntasItems" Relationship="Self.FK_PreguntasItems_ItemsPreventivos" FromRole="ItemsPreventivos" ToRole="PreguntasItems" />
+        </EntityType>
+        <EntityType Name="Modulos">
+          <Key>
+            <PropertyRef Name="idModulo" />
+          </Key>
+          <Property Name="idModulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo" Type="Boolean" />
+          <Property Name="vista" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="controlador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="icono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PermisosMenu" Relationship="Self.FK_PermisosMenu_Modulos" FromRole="Modulos" ToRole="PermisosMenu" />
+          <NavigationProperty Name="SubMenu" Relationship="Self.FK_SubMenu_Modulos" FromRole="Modulos" ToRole="SubMenu" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="idPaciente" />
+          </Key>
+          <Property Name="idPaciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="edad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isapre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FarmacoPaciente" Relationship="Self.FK_FarmacoPaciente_Paciente" FromRole="Paciente" ToRole="FarmacoPaciente" />
+          <NavigationProperty Name="Historial" Relationship="Self.FK_Historial_Paciente" FromRole="Paciente" ToRole="Historial" />
+        </EntityType>
+        <EntityType Name="PermisosMenu">
+          <Key>
+            <PropertyRef Name="idPermisosModulo" />
+          </Key>
+          <Property Name="idPermisosModulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codModulo" Type="Int32" />
+          <Property Name="tipo" Type="Int32" />
+          <NavigationProperty Name="Modulos" Relationship="Self.FK_PermisosMenu_Modulos" FromRole="PermisosMenu" ToRole="Modulos" />
+          <NavigationProperty Name="TipoUsuario" Relationship="Self.FK_PermisosMenu_TipoUsuario" FromRole="PermisosMenu" ToRole="TipoUsuario" />
+        </EntityType>
+        <EntityType Name="PermisosSubMenu">
+          <Key>
+            <PropertyRef Name="idPermisosSubMenu" />
+          </Key>
+          <Property Name="idPermisosSubMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codSubMenu" Type="Int32" />
+          <Property Name="tipo" Type="Int32" />
+          <NavigationProperty Name="SubMenu" Relationship="Self.FK_PermisosSubMenu_SubMenu" FromRole="PermisosSubMenu" ToRole="SubMenu" />
+          <NavigationProperty Name="TipoUsuario" Relationship="Self.FK_PermisosSubMenu_TipoUsuario" FromRole="PermisosSubMenu" ToRole="TipoUsuario" />
+        </EntityType>
+        <EntityType Name="PreguntasItems">
+          <Key>
+            <PropertyRef Name="idPreguntasItems" />
+          </Key>
+          <Property Name="idPreguntasItems" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="codItems" Type="Int32" />
+          <NavigationProperty Name="ItemsPreventivos" Relationship="Self.FK_PreguntasItems_ItemsPreventivos" FromRole="PreguntasItems" ToRole="ItemsPreventivos" />
+        </EntityType>
+        <EntityType Name="SubMenu">
+          <Key>
+            <PropertyRef Name="idSubModulo" />
+          </Key>
+          <Property Name="idSubModulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="codModulo" Type="Int32" />
+          <Property Name="vista" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="controlador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Modulos" Relationship="Self.FK_SubMenu_Modulos" FromRole="SubMenu" ToRole="Modulos" />
+          <NavigationProperty Name="PermisosSubMenu" Relationship="Self.FK_PermisosSubMenu_SubMenu" FromRole="SubMenu" ToRole="PermisosSubMenu" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TipoDeSeguimiento">
+          <Key>
+            <PropertyRef Name="idTipo" />
+          </Key>
+          <Property Name="idTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Historial" Relationship="Self.FK_Historial_TipoDeSeguimiento" FromRole="TipoDeSeguimiento" ToRole="Historial" />
+          <NavigationProperty Name="ItemsPreventivos" Relationship="Self.FK_ItemsPreventivos_TipoDeSeguimiento" FromRole="TipoDeSeguimiento" ToRole="ItemsPreventivos" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="idTipoUsuario" />
+          </Key>
+          <Property Name="idTipoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PermisosMenu" Relationship="Self.FK_PermisosMenu_TipoUsuario" FromRole="TipoUsuario" ToRole="PermisosMenu" />
+          <NavigationProperty Name="PermisosSubMenu" Relationship="Self.FK_PermisosSubMenu_TipoUsuario" FromRole="TipoUsuario" ToRole="PermisosSubMenu" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_TipoUsuario" FromRole="TipoUsuario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usuario1" />
+          </Key>
+          <Property Name="usuario1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipoUsuario" Type="Int32" />
+          <Property Name="hash" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TipoUsuario1" Relationship="Self.FK_Usuario_TipoUsuario" FromRole="Usuario" ToRole="TipoUsuario" />
+        </EntityType>
+        <Association Name="FK_FarmacoExamen_Examenes">
+          <End Role="Examenes" Type="Self.Examenes" Multiplicity="0..1" />
+          <End Role="FarmacoExamen" Type="Self.FarmacoExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examenes">
+              <PropertyRef Name="idExamen" />
+            </Principal>
+            <Dependent Role="FarmacoExamen">
+              <PropertyRef Name="idExamen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FarmacoExamen_Farmacos">
+          <End Role="Farmacos" Type="Self.Farmacos" Multiplicity="0..1" />
+          <End Role="FarmacoExamen" Type="Self.FarmacoExamen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farmacos">
+              <PropertyRef Name="idFarmacos" />
+            </Principal>
+            <Dependent Role="FarmacoExamen">
+              <PropertyRef Name="idFarmaco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FarmacoPaciente_Farmacos">
+          <End Role="Farmacos" Type="Self.Farmacos" Multiplicity="0..1" />
+          <End Role="FarmacoPaciente" Type="Self.FarmacoPaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farmacos">
+              <PropertyRef Name="idFarmacos" />
+            </Principal>
+            <Dependent Role="FarmacoPaciente">
+              <PropertyRef Name="idFarmaco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FarmacoPaciente_Paciente">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+          <End Role="FarmacoPaciente" Type="Self.FarmacoPaciente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="idPaciente" />
+            </Principal>
+            <Dependent Role="FarmacoPaciente">
+              <PropertyRef Name="idPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FarmacoReceta_Farmacos">
+          <End Role="Farmacos" Type="Self.Farmacos" Multiplicity="0..1" />
+          <End Role="FarmacoReceta" Type="Self.FarmacoReceta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farmacos">
+              <PropertyRef Name="idFarmacos" />
+            </Principal>
+            <Dependent Role="FarmacoReceta">
+              <PropertyRef Name="idFarmaco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Historial_Paciente">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+          <End Role="Historial" Type="Self.Historial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="idPaciente" />
+            </Principal>
+            <Dependent Role="Historial">
+              <PropertyRef Name="rutPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Historial_TipoDeSeguimiento">
+          <End Role="TipoDeSeguimiento" Type="Self.TipoDeSeguimiento" Multiplicity="0..1" />
+          <End Role="Historial" Type="Self.Historial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDeSeguimiento">
+              <PropertyRef Name="idTipo" />
+            </Principal>
+            <Dependent Role="Historial">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemsPreventivos_TipoDeSeguimiento">
+          <End Role="TipoDeSeguimiento" Type="Self.TipoDeSeguimiento" Multiplicity="0..1" />
+          <End Role="ItemsPreventivos" Type="Self.ItemsPreventivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDeSeguimiento">
+              <PropertyRef Name="idTipo" />
+            </Principal>
+            <Dependent Role="ItemsPreventivos">
+              <PropertyRef Name="codTipoSeguimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreguntasItems_ItemsPreventivos">
+          <End Role="ItemsPreventivos" Type="Self.ItemsPreventivos" Multiplicity="0..1" />
+          <End Role="PreguntasItems" Type="Self.PreguntasItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemsPreventivos">
+              <PropertyRef Name="idItemsPreventivo" />
+            </Principal>
+            <Dependent Role="PreguntasItems">
+              <PropertyRef Name="codItems" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermisosMenu_Modulos">
+          <End Role="Modulos" Type="Self.Modulos" Multiplicity="0..1" />
+          <End Role="PermisosMenu" Type="Self.PermisosMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulos">
+              <PropertyRef Name="idModulo" />
+            </Principal>
+            <Dependent Role="PermisosMenu">
+              <PropertyRef Name="codModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubMenu_Modulos">
+          <End Role="Modulos" Type="Self.Modulos" Multiplicity="0..1" />
+          <End Role="SubMenu" Type="Self.SubMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulos">
+              <PropertyRef Name="idModulo" />
+            </Principal>
+            <Dependent Role="SubMenu">
+              <PropertyRef Name="codModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermisosMenu_TipoUsuario">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="0..1" />
+          <End Role="PermisosMenu" Type="Self.PermisosMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="idTipoUsuario" />
+            </Principal>
+            <Dependent Role="PermisosMenu">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermisosSubMenu_SubMenu">
+          <End Role="SubMenu" Type="Self.SubMenu" Multiplicity="0..1" />
+          <End Role="PermisosSubMenu" Type="Self.PermisosSubMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubMenu">
+              <PropertyRef Name="idSubModulo" />
+            </Principal>
+            <Dependent Role="PermisosSubMenu">
+              <PropertyRef Name="codSubMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermisosSubMenu_TipoUsuario">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="0..1" />
+          <End Role="PermisosSubMenu" Type="Self.PermisosSubMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="idTipoUsuario" />
+            </Principal>
+            <Dependent Role="PermisosSubMenu">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_TipoUsuario">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="idTipoUsuario" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="tipoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FarmacosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Examenes" EntityType="Self.Examenes" />
+          <EntitySet Name="FarmacoExamen" EntityType="Self.FarmacoExamen" />
+          <EntitySet Name="FarmacoPaciente" EntityType="Self.FarmacoPaciente" />
+          <EntitySet Name="FarmacoReceta" EntityType="Self.FarmacoReceta" />
+          <EntitySet Name="Farmacos" EntityType="Self.Farmacos" />
+          <EntitySet Name="Historial" EntityType="Self.Historial" />
+          <EntitySet Name="ItemsPreventivos" EntityType="Self.ItemsPreventivos" />
+          <EntitySet Name="Modulos" EntityType="Self.Modulos" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" />
+          <EntitySet Name="PermisosMenu" EntityType="Self.PermisosMenu" />
+          <EntitySet Name="PermisosSubMenu" EntityType="Self.PermisosSubMenu" />
+          <EntitySet Name="PreguntasItems" EntityType="Self.PreguntasItems" />
+          <EntitySet Name="SubMenu" EntityType="Self.SubMenu" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TipoDeSeguimiento" EntityType="Self.TipoDeSeguimiento" />
+          <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_FarmacoExamen_Examenes" Association="Self.FK_FarmacoExamen_Examenes">
+            <End Role="Examenes" EntitySet="Examenes" />
+            <End Role="FarmacoExamen" EntitySet="FarmacoExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FarmacoExamen_Farmacos" Association="Self.FK_FarmacoExamen_Farmacos">
+            <End Role="Farmacos" EntitySet="Farmacos" />
+            <End Role="FarmacoExamen" EntitySet="FarmacoExamen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FarmacoPaciente_Farmacos" Association="Self.FK_FarmacoPaciente_Farmacos">
+            <End Role="Farmacos" EntitySet="Farmacos" />
+            <End Role="FarmacoPaciente" EntitySet="FarmacoPaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FarmacoPaciente_Paciente" Association="Self.FK_FarmacoPaciente_Paciente">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="FarmacoPaciente" EntitySet="FarmacoPaciente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FarmacoReceta_Farmacos" Association="Self.FK_FarmacoReceta_Farmacos">
+            <End Role="Farmacos" EntitySet="Farmacos" />
+            <End Role="FarmacoReceta" EntitySet="FarmacoReceta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Historial_Paciente" Association="Self.FK_Historial_Paciente">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Historial" EntitySet="Historial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Historial_TipoDeSeguimiento" Association="Self.FK_Historial_TipoDeSeguimiento">
+            <End Role="TipoDeSeguimiento" EntitySet="TipoDeSeguimiento" />
+            <End Role="Historial" EntitySet="Historial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsPreventivos_TipoDeSeguimiento" Association="Self.FK_ItemsPreventivos_TipoDeSeguimiento">
+            <End Role="TipoDeSeguimiento" EntitySet="TipoDeSeguimiento" />
+            <End Role="ItemsPreventivos" EntitySet="ItemsPreventivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreguntasItems_ItemsPreventivos" Association="Self.FK_PreguntasItems_ItemsPreventivos">
+            <End Role="ItemsPreventivos" EntitySet="ItemsPreventivos" />
+            <End Role="PreguntasItems" EntitySet="PreguntasItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermisosMenu_Modulos" Association="Self.FK_PermisosMenu_Modulos">
+            <End Role="Modulos" EntitySet="Modulos" />
+            <End Role="PermisosMenu" EntitySet="PermisosMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubMenu_Modulos" Association="Self.FK_SubMenu_Modulos">
+            <End Role="Modulos" EntitySet="Modulos" />
+            <End Role="SubMenu" EntitySet="SubMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermisosMenu_TipoUsuario" Association="Self.FK_PermisosMenu_TipoUsuario">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="PermisosMenu" EntitySet="PermisosMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermisosSubMenu_SubMenu" Association="Self.FK_PermisosSubMenu_SubMenu">
+            <End Role="SubMenu" EntitySet="SubMenu" />
+            <End Role="PermisosSubMenu" EntitySet="PermisosSubMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermisosSubMenu_TipoUsuario" Association="Self.FK_PermisosSubMenu_TipoUsuario">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="PermisosSubMenu" EntitySet="PermisosSubMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_TipoUsuario" Association="Self.FK_Usuario_TipoUsuario">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FarmacosModelStoreContainer" CdmEntityContainer="FarmacosEntities">
+          <EntitySetMapping Name="Examenes">
+            <EntityTypeMapping TypeName="FarmacosModel.Examenes">
+              <MappingFragment StoreEntitySet="Examenes">
+                <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+                <ScalarProperty Name="examen" ColumnName="examen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FarmacoExamen">
+            <EntityTypeMapping TypeName="FarmacosModel.FarmacoExamen">
+              <MappingFragment StoreEntitySet="FarmacoExamen">
+                <ScalarProperty Name="idExamenFarmaco" ColumnName="idExamenFarmaco" />
+                <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+                <ScalarProperty Name="idFarmaco" ColumnName="idFarmaco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FarmacoPaciente">
+            <EntityTypeMapping TypeName="FarmacosModel.FarmacoPaciente">
+              <MappingFragment StoreEntitySet="FarmacoPaciente">
+                <ScalarProperty Name="idFarmacoPaciente" ColumnName="idFarmacoPaciente" />
+                <ScalarProperty Name="idFarmaco" ColumnName="idFarmaco" />
+                <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FarmacoReceta">
+            <EntityTypeMapping TypeName="FarmacosModel.FarmacoReceta">
+              <MappingFragment StoreEntitySet="FarmacoReceta">
+                <ScalarProperty Name="idFarmacoReceta" ColumnName="idFarmacoReceta" />
+                <ScalarProperty Name="idFarmaco" ColumnName="idFarmaco" />
+                <ScalarProperty Name="idReceta" ColumnName="idReceta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Farmacos">
+            <EntityTypeMapping TypeName="FarmacosModel.Farmacos">
+              <MappingFragment StoreEntitySet="Farmacos">
+                <ScalarProperty Name="idFarmacos" ColumnName="idFarmacos" />
+                <ScalarProperty Name="farmaco" ColumnName="farmaco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Historial">
+            <EntityTypeMapping TypeName="FarmacosModel.Historial">
+              <MappingFragment StoreEntitySet="Historial">
+                <ScalarProperty Name="idHistorial" ColumnName="idHistorial" />
+                <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+                <ScalarProperty Name="idFarmaco" ColumnName="idFarmaco" />
+                <ScalarProperty Name="doctor" ColumnName="doctor" />
+                <ScalarProperty Name="rutPaciente" ColumnName="rutPaciente" />
+                <ScalarProperty Name="fechaIngresoFarmaco" ColumnName="fechaIngresoFarmaco" />
+                <ScalarProperty Name="rangoDeExamen" ColumnName="rangoDeExamen" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="proximaFecha" ColumnName="proximaFecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemsPreventivos">
+            <EntityTypeMapping TypeName="FarmacosModel.ItemsPreventivos">
+              <MappingFragment StoreEntitySet="ItemsPreventivos">
+                <ScalarProperty Name="idItemsPreventivo" ColumnName="idItemsPreventivo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codTipoSeguimiento" ColumnName="codTipoSeguimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modulos">
+            <EntityTypeMapping TypeName="FarmacosModel.Modulos">
+              <MappingFragment StoreEntitySet="Modulos">
+                <ScalarProperty Name="idModulo" ColumnName="idModulo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="vista" ColumnName="vista" />
+                <ScalarProperty Name="controlador" ColumnName="controlador" />
+                <ScalarProperty Name="icono" ColumnName="icono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paciente">
+            <EntityTypeMapping TypeName="FarmacosModel.Paciente">
+              <MappingFragment StoreEntitySet="Paciente">
+                <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+                <ScalarProperty Name="rut" ColumnName="rut" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="isapre" ColumnName="isapre" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermisosMenu">
+            <EntityTypeMapping TypeName="FarmacosModel.PermisosMenu">
+              <MappingFragment StoreEntitySet="PermisosMenu">
+                <ScalarProperty Name="idPermisosModulo" ColumnName="idPermisosModulo" />
+                <ScalarProperty Name="codModulo" ColumnName="codModulo" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermisosSubMenu">
+            <EntityTypeMapping TypeName="FarmacosModel.PermisosSubMenu">
+              <MappingFragment StoreEntitySet="PermisosSubMenu">
+                <ScalarProperty Name="idPermisosSubMenu" ColumnName="idPermisosSubMenu" />
+                <ScalarProperty Name="codSubMenu" ColumnName="codSubMenu" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreguntasItems">
+            <EntityTypeMapping TypeName="FarmacosModel.PreguntasItems">
+              <MappingFragment StoreEntitySet="PreguntasItems">
+                <ScalarProperty Name="idPreguntasItems" ColumnName="idPreguntasItems" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="codItems" ColumnName="codItems" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubMenu">
+            <EntityTypeMapping TypeName="FarmacosModel.SubMenu">
+              <MappingFragment StoreEntitySet="SubMenu">
+                <ScalarProperty Name="idSubModulo" ColumnName="idSubModulo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="codModulo" ColumnName="codModulo" />
+                <ScalarProperty Name="vista" ColumnName="vista" />
+                <ScalarProperty Name="controlador" ColumnName="controlador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FarmacosModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoDeSeguimiento">
+            <EntityTypeMapping TypeName="FarmacosModel.TipoDeSeguimiento">
+              <MappingFragment StoreEntitySet="TipoDeSeguimiento">
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoUsuario">
+            <EntityTypeMapping TypeName="FarmacosModel.TipoUsuario">
+              <MappingFragment StoreEntitySet="TipoUsuario">
+                <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="FarmacosModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="tipoUsuario" ColumnName="tipoUsuario" />
+                <ScalarProperty Name="hash" ColumnName="hash" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

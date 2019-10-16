@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc084b2ef62949eb92ba957ccba2afbe" Name="Diagram1">
+        <EntityTypeShape EntityType="FarmacosModel.Examenes" Width="1.5" PointX="5.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.FarmacoExamen" Width="1.5" PointX="8" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.FarmacoPaciente" Width="1.5" PointX="8" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.FarmacoReceta" Width="1.5" PointX="8" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.Farmacos" Width="1.5" PointX="5.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.Historial" Width="1.5" PointX="13" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.ItemsPreventivos" Width="1.5" PointX="13" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.Modulos" Width="1.5" PointX="1.5" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.Paciente" Width="1.5" PointX="5.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.PermisosMenu" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.PermisosSubMenu" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.PreguntasItems" Width="1.5" PointX="15.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.SubMenu" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.TipoDeSeguimiento" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.TipoUsuario" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FarmacosModel.Usuario" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <AssociationConnector Association="FarmacosModel.FK_FarmacoExamen_Examenes" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmacosModel.FK_FarmacoExamen_Farmacos" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmacosModel.FK_FarmacoPaciente_Farmacos" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmacosModel.FK_FarmacoPaciente_Paciente" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmacosModel.FK_FarmacoReceta_Farmacos" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmacosModel.FK_Historial_Paciente" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmacosModel.FK_Historial_TipoDeSeguimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmacosModel.FK_ItemsPreventivos_TipoDeSeguimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmacosModel.FK_PreguntasItems_ItemsPreventivos" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmacosModel.FK_PermisosMenu_Modulos" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmacosModel.FK_SubMenu_Modulos" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmacosModel.FK_PermisosMenu_TipoUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmacosModel.FK_PermisosSubMenu_SubMenu" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmacosModel.FK_PermisosSubMenu_TipoUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="FarmacosModel.FK_Usuario_TipoUsuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

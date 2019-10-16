@@ -47,6 +47,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.7\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
     </Reference>
@@ -76,6 +82,8 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -134,8 +142,75 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Examenes.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FarmacoExamen.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FarmacoPaciente.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FarmacoReceta.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Farmacos.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Historial.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ItemsPreventivos.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Modulos.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Paciente.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PermisosMenu.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PermisosSubMenu.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PreguntasItems.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Preventivo.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Preventivo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Preventivo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Preventivo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Preventivo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SubMenu.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoDeSeguimiento.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoUsuario.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuario.cs">
+      <DependentUpon>Preventivo.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -147,9 +222,23 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dataTables.bootstrap4.css" />
+    <Content Include="Content\img\medicienLogin.jpg" />
+    <Content Include="Content\img\medicienLogin2.jpg" />
+    <Content Include="Content\sb-admin.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Preventivo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Preventivo.Context.cs</LastGenOutput>
+      <DependentUpon>Preventivo.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Preventivo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Preventivo.edmx</DependentUpon>
+      <LastGenOutput>Preventivo.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -172,6 +261,18 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\sb-admin.min.js" />
+    <Content Include="webfonts\fa-brands-400.svg" />
+    <Content Include="webfonts\fa-regular-400.svg" />
+    <Content Include="webfonts\fa-solid-900.svg" />
+    <EntityDeploy Include="Models\Preventivo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Preventivo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Preventivo.edmx.diagram">
+      <DependentUpon>Preventivo.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -214,16 +315,29 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="webfonts\fa-brands-400.eot" />
+    <Content Include="webfonts\fa-brands-400.ttf" />
+    <Content Include="webfonts\fa-brands-400.woff" />
+    <Content Include="webfonts\fa-brands-400.woff2" />
+    <Content Include="webfonts\fa-regular-400.eot" />
+    <Content Include="webfonts\fa-regular-400.ttf" />
+    <Content Include="webfonts\fa-regular-400.woff" />
+    <Content Include="webfonts\fa-regular-400.woff2" />
+    <Content Include="webfonts\fa-solid-900.eot" />
+    <Content Include="webfonts\fa-solid-900.ttf" />
+    <Content Include="webfonts\fa-solid-900.woff" />
+    <Content Include="webfonts\fa-solid-900.woff2" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
